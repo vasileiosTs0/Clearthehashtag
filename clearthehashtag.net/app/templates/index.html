@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="d-flex justify-content-start">
+    <h4>Hello there,</h4>
+</div>
+  <div class = "text-justify">
+      <br>      
+      <p>The aim of this website is to tackle any confusion, misinformation, propaganda and fake news. </p>
+      <br>      
+      <p>The idea of this website is to leverage AI to:</p>
+      <ul>
+        <li>collect the relative data from social media and public aritcles,</li>
+        <li>perform sentiment analysis on the data,</li>
+        <li>categorize the results of the analysis,</li>
+        <li>depicture the analysis, and</li>
+        <li>reveal the complete story of the underlying hashtag.</li>
+      </ul>
+  </div>
+  <br>
+  <br>
+  <div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join the mailing list and get notified when the website is ready</legend>
+            <div class="form-group">
+                <label for="staticEmail" class="col-sm-2 col-form-label text-right">{{ form.first_name.label(class="form-control-label") }}</label>
+
+                {% if form.first_name.errors %}
+                    {{ form.first_name(class="form-control form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.first_name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.first_name(class="form-control form-control") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="staticEmail" class="col-sm-2 col-form-label text-right">{{ form.email.label(class="form-control-label") }}</label>
+                {% if form.email.errors %}
+                    {{ form.email(class="form-control form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.email(class="form-control form-control") }}
+                {% endif %}
+            </div>
+            
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+
+{% endblock %}
